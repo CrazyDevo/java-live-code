@@ -12,6 +12,8 @@ public class TestReading {
 
         System.out.println(jsonObject.get("name"));
         System.out.println(jsonObject.get("age"));
+       // jsonObject.remove("age");
+       // jsonObject.put("last_name","Barry");
 
 
         System.out.println(user);
