@@ -11,7 +11,7 @@ public class J04_MergeArrays {
 
         //int[] merged = {1, 3, 5, 2, 4, 6};
 
-        int [] result=mergeArray(a,b);
+        int [] result=mergeArray1(a,b);
 
 
         System.out.println(Arrays.toString(result));
@@ -41,4 +41,19 @@ public class J04_MergeArrays {
         return result;
 
     }
+
+    private static int[] mergeArray1(int[] first, int[] last) {
+
+        int [] result=new int[first.length+last.length];
+
+        for (int i = 0; i < first.length; i++) {
+            result[i]=first[i];
+            result[i+first.length]=last[i];
+        }
+
+        return result;
+
+
+    }
+
 }
