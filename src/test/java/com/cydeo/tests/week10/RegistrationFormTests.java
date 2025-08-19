@@ -44,6 +44,10 @@ public class RegistrationFormTests {
         select("Java");
         WaitUtilities.sleep(3);
         select("javaScripT");
+
+        WaitUtilities.sleep(3);
+        select("javaScripT");
+
         WaitUtilities.sleep(3);
 
 
