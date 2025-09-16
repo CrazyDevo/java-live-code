@@ -1,10 +1,13 @@
 package com.cydeo.tests.week12;
 
 import com.cydeo.tests.week12.pojos.Product;
+import com.cydeo.utils.JSONUtils;
+import com.github.javafaker.Faker;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
+import org.json.JSONObject;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -84,6 +87,26 @@ public class APITests {
 
         Assert.assertEquals(product.getId(),1);
         Assert.assertEquals(product.getRating().getRate(),3.9);
+
+
+    }
+
+    @Test
+    public void test6() {
+        //after jdk 15
+        String s = JSONUtils.readJSONFile("testData", "productTemplate");
+
+        JSONObject product=new JSONObject(s);
+        product.put("price",new Faker().number().randomDouble(4,100,1000));
+        product.put("title",new Faker().name().firstName()+ " " + new Faker().name().lastName());
+
+
+        Response response = RestAssured.given()
+                .contentType(ContentType.JSON)
+                .body(product.toString())
+               // .accept("application/json")
+                .post("https://fakestoreapi.com/products");
+        response.prettyPrint();
 
 
     }
